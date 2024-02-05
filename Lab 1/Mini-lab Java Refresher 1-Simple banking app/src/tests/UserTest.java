@@ -4,8 +4,9 @@ import model.User;
 
 public class UserTest {
 
-       public static void testUserConstructor() {
 
+
+       public static void testUserConstructor() {
            String test_username = "mike";
            String test_password = "my_passwd";
            String test_first_name = "Mike";
@@ -39,26 +40,27 @@ public class UserTest {
            else
                System.out.println(TestUtils.TEXT_COLOR_RED + "TC5-getMobile_number-FAILED" + TestUtils.TEXT_COLOR_RESET);
 
+
+
+
+
        }
 
+       public static void main(String[] args) {
+           testUserConstructor();
 
-        public static void main(String[] args) {
+           String test_username = "mike";
+           String test_password = "my_passwd";
+           String test_first_name = "Mike";
+           String test_last_name = "Smith";
+           String test_mobile_number = "07771234567";
 
-      testUserConstructor();
+           User testUser = new User(test_username, test_password, test_first_name, test_last_name, test_mobile_number);
 
-    }
-
-
-
+           assert testUser.getUsername() == test_username;
+           assert testUser.getPassword() == test_password;
+           assert testUser.getFirst_name() == test_first_name;
+           assert testUser.getLast_name() == test_last_name;
+           assert testUser.getMobile_number() == test_mobile_number;
+       }
 }
-
-
-
-//    public static void main(String[] args) {
-//
-//        User testUser = new User("mike", "my_passwd", "Mike", "Smith", "07771234567");
-//        System.out.println(testUser);
-//
-//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//
-//    }

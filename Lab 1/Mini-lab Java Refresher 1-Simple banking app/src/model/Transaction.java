@@ -4,10 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Transaction {
-
     String account_number;
     double transaction_amount;
-
     Date transaction_date;
 
     public Transaction(String account_number, double transaction_amount, Date transaction_date) {

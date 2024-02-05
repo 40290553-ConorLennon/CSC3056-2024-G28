@@ -35,8 +35,12 @@ public class SimpleBankingApp {
 		System.out.println(String.format("%-25s| %-15s| %-15s| %-15s| %-15s", 
 				"username", "password", "first_name", "last_name", "mobile_number"));
 		System.out.println("-------------------------------------------------------------------------------------------");
-		for  (int i = 0; i < users.size(); i++) 
-            System.out.println(users.get(i).toString());	
+		for  (int i = 0; i < users.size(); i++) {
+			//System.out.println(users.get(i).toString());
+			System.out.println(String.format("%-25s| %-15s| %-15s| %-15s| %-15s",
+					users.get(i).getUsername(), users.get(i).getPassword(),
+					users.get(i).getFirst_name(), users.get(i).getLast_name(), users.get(i).getMobile_number()));
+		}
 		System.out.println();
 	}
 	
@@ -69,11 +73,16 @@ public class SimpleBankingApp {
 		//System.out.println("Account_number | username_of_account_holder | account_type | account_opening_date");
 
 		System.out.println(String.format("%-10s| %-30s| %-10s| %-15s| %-15s", 
-				"model.Account #", "username_of_account_holder", "type", "opening_date", "Balance"));
+				"Account #", "username_of_account_holder", "type", "opening_date", "Balance"));
 		System.out.println("--------------------------------------------------------------------------------");
-		
-		for  (int i = 0; i < accounts.size(); i++) 
-            System.out.println(accounts.get(i).toString() + "| $" + getBalance(accounts.get(i).getAccount_number()));
+
+		SimpleDateFormat sdf = new SimpleDateFormat("(MMM dd, yyyy)");
+
+		for (int i = 0; i < accounts.size(); i++) {
+			System.out.println(String.format("%-10s| %-30s| %-10s| %-15s| %-15s",
+					accounts.get(i).getAccount_number(), accounts.get(i).getUsername_of_account_holder(), accounts.get(i).getAccount_type(),
+					sdf.format(accounts.get(i).getAccount_opening_date()), "$" + getBalance(accounts.get(i).getAccount_number())));
+		}
 		
 		System.out.println();
 	}
@@ -92,9 +101,14 @@ public class SimpleBankingApp {
 	 * @return A double value, being the balance of the account
 	 */
 	public static double getBalance(String account_number) {
-		return 0;
-		// TODO
-		
+		double total = 0;
+        for (Transaction transaction : transactions) {
+            if (transaction.getAccount_number() == account_number) {
+                total += transaction.getTransaction_amount();
+            }
+        }
+
+		return total;
 	}
 	
 	

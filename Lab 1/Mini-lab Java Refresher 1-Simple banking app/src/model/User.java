@@ -2,7 +2,7 @@ package model;
 
 public class User {
 
-    private String username;
+    private String username; //email address
     private String password;
     private String first_name;
     private String last_name;
