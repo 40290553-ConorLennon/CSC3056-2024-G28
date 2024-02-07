@@ -7,7 +7,6 @@ import java.util.Date;
 
 public class AccountTest {
 
-
     public static void testConstructor() throws ParseException {
         String testAccountNumber = "1234-5678";
         String testUsernameOfAccountHolder = "jeff@gmail.com";
@@ -27,7 +26,8 @@ public class AccountTest {
         String testAccountType = "Standard"; // "Standard" or "Saving"
         Date testAccountOpeningDate = new SimpleDateFormat("dd/MM/yyyy").parse("20/08/2019"); ;
 
-        Account testAccount = new Account("test", "test", "test", new SimpleDateFormat("dd/MM/yyyy").parse("20/08/2022"));
+        Account testAccount = new Account("test", "test", "test",
+                new SimpleDateFormat("dd/MM/yyyy").parse("20/08/2022"));
 
         testAccount.setAccount_number(testAccountNumber);
         testAccount.setUsername_of_account_holder(testUsernameOfAccountHolder);
@@ -44,7 +44,5 @@ public class AccountTest {
         testConstructor();
         testSetters();
     }
-
-
 
 }

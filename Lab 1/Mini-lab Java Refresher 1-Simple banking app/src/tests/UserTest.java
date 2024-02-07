@@ -18,7 +18,7 @@ public class UserTest {
            if(testUser.getUsername() == test_username)
                System.out.println(TestUtils.TEXT_COLOR_GREEN + "TC1-getUsername-Passed");
            else
-               System.out.println(TestUtils.TEXT_COLOR_RED + "TC1-getUsername-FAILED" + TestUtils.TEXT_COLOR_RESET);
+               System.out.println(TestUtils.TEXT_COLOR_RED + "TC1-getUsername-FAILED: username did not match" + TestUtils.TEXT_COLOR_RESET);
 
            if(testUser.getPassword() == test_password)
                System.out.println(TestUtils.TEXT_COLOR_GREEN + "TC2-getPassword-Passed");
@@ -28,22 +28,17 @@ public class UserTest {
            if(testUser.getFirst_name() == test_first_name)
                System.out.println(TestUtils.TEXT_COLOR_GREEN + "TC3-getFirst_name-Passed");
            else
-               System.out.println(TestUtils.TEXT_COLOR_RED + "TC3-getFirst_name-FAILED: firstname did not match" + TestUtils.TEXT_COLOR_RESET);
+               System.out.println(TestUtils.TEXT_COLOR_RED + "TC3-getFirst_name-FAILED: first name did not match" + TestUtils.TEXT_COLOR_RESET);
 
            if(testUser.getLast_name() == test_last_name)
                System.out.println(TestUtils.TEXT_COLOR_GREEN + "TC4-getLast_name-Passed");
            else
-               System.out.println(TestUtils.TEXT_COLOR_RED + "TC4-getLast_name-FAILED" + TestUtils.TEXT_COLOR_RESET);
+               System.out.println(TestUtils.TEXT_COLOR_RED + "TC4-getLast_name-FAILED: last name did not match" + TestUtils.TEXT_COLOR_RESET);
 
            if(testUser.getMobile_number() == test_mobile_number)
                System.out.println(TestUtils.TEXT_COLOR_GREEN + "TC5-getMobile_number-Passed");
            else
-               System.out.println(TestUtils.TEXT_COLOR_RED + "TC5-getMobile_number-FAILED" + TestUtils.TEXT_COLOR_RESET);
-
-
-
-
-
+               System.out.println(TestUtils.TEXT_COLOR_RED + "TC5-getMobile_number-FAILED: mobile number did not match" + TestUtils.TEXT_COLOR_RESET);
        }
 
        public static void main(String[] args) {
