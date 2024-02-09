@@ -3,6 +3,10 @@ package model;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/*
+ * Author: Conor Lennon and Benjamin Millis
+ * This was done by both of us together with IntelliJs code with me plugin.
+ */
 public class Account {
     String account_number;
     String username_of_account_holder;

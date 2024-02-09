@@ -5,6 +5,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/*
+ * Author: Conor Lennon and Benjamin Millis
+ * This was done by both of us together with IntelliJs code with me plugin.
+ */
 public class AccountTest {
 
     public static void testConstructor() throws ParseException {

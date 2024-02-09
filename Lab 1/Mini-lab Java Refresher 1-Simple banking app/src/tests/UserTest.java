@@ -2,9 +2,11 @@ package tests;
 
 import model.User;
 
+/*
+* Author: Conor Lennon and Benjamin Millis
+* This was done by both of us together with IntelliJs code with me plugin.
+*/
 public class UserTest {
-
-
 
        public static void testUserConstructor() {
            String test_username = "mike";

@@ -9,7 +9,10 @@ import java.util.Vector;
 import model.Account;
 import model.Transaction;
 import model.User;
-
+/*
+ * Author: Conor Lennon and Benjamin Millis
+ * This was done by both of us together with IntelliJs code with me plugin.
+ */
 public class SimpleBankingApp {
 	public static Vector<User> users = new Vector<User>();
 	public static Vector<Account> accounts  = new Vector<Account>();
@@ -36,7 +39,6 @@ public class SimpleBankingApp {
 				"username", "password", "first_name", "last_name", "mobile_number"));
 		System.out.println("-------------------------------------------------------------------------------------------");
 		for  (int i = 0; i < users.size(); i++) {
-			//System.out.println(users.get(i).toString());
 			System.out.println(String.format("%-25s| %-15s| %-15s| %-15s| %-15s",
 					users.get(i).getUsername(), users.get(i).getPassword(),
 					users.get(i).getFirst_name(), users.get(i).getLast_name(), users.get(i).getMobile_number()));
@@ -70,7 +72,6 @@ public class SimpleBankingApp {
 	
 	public static void printAllAccounts() {
 		System.out.println("There are: " + accounts.size() + " accounts in the system.");
-		//System.out.println("Account_number | username_of_account_holder | account_type | account_opening_date");
 
 		System.out.println(String.format("%-10s| %-30s| %-10s| %-15s| %-15s", 
 				"Account #", "username_of_account_holder", "type", "opening_date", "Balance"));
@@ -102,6 +103,7 @@ public class SimpleBankingApp {
 	 */
 	public static double getBalance(String account_number) {
 		double total = 0;
+
         for (Transaction transaction : transactions) {
             if (transaction.getAccount_number() == account_number) {
                 total += transaction.getTransaction_amount();
