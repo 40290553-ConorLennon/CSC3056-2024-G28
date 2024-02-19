@@ -35,13 +35,13 @@ public class SimpleBankingApp {
 	
 	public static void printAllUsers() {
 		System.out.println("There are: " + users.size() + " users in the system.");	
-		System.out.println(String.format("%-25s| %-15s| %-15s| %-15s| %-15s", 
-				"username", "password", "first_name", "last_name", "mobile_number"));
+		System.out.printf("%-25s| %-15s| %-15s| %-15s| %-15s%n",
+				"username", "password", "first_name", "last_name", "mobile_number");
 		System.out.println("-------------------------------------------------------------------------------------------");
 		for  (int i = 0; i < users.size(); i++) {
-			System.out.println(String.format("%-25s| %-15s| %-15s| %-15s| %-15s",
+			System.out.printf("%-25s| %-15s| %-15s| %-15s| %-15s%n",
 					users.get(i).getUsername(), users.get(i).getPassword(),
-					users.get(i).getFirst_name(), users.get(i).getLast_name(), users.get(i).getMobile_number()));
+					users.get(i).getFirst_name(), users.get(i).getLast_name(), users.get(i).getMobile_number());
 		}
 		System.out.println();
 	}
@@ -73,16 +73,16 @@ public class SimpleBankingApp {
 	public static void printAllAccounts() {
 		System.out.println("There are: " + accounts.size() + " accounts in the system.");
 
-		System.out.println(String.format("%-10s| %-30s| %-10s| %-15s| %-15s", 
-				"Account #", "username_of_account_holder", "type", "opening_date", "Balance"));
+		System.out.printf("%-10s| %-30s| %-10s| %-15s| %-15s%n",
+				"Account #", "username_of_account_holder", "type", "opening_date", "Balance");
 		System.out.println("--------------------------------------------------------------------------------");
 
 		SimpleDateFormat sdf = new SimpleDateFormat("(MMM dd, yyyy)");
 
 		for (int i = 0; i < accounts.size(); i++) {
-			System.out.println(String.format("%-10s| %-30s| %-10s| %-15s| %-15s",
+			System.out.printf("%-10s| %-30s| %-10s| %-15s| %-15s%n",
 					accounts.get(i).getAccount_number(), accounts.get(i).getUsername_of_account_holder(), accounts.get(i).getAccount_type(),
-					sdf.format(accounts.get(i).getAccount_opening_date()), "$" + getBalance(accounts.get(i).getAccount_number())));
+					sdf.format(accounts.get(i).getAccount_opening_date()), "$" + getBalance(accounts.get(i).getAccount_number()));
 		}
 		
 		System.out.println();
