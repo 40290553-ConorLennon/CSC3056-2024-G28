@@ -21,8 +21,6 @@ public class DataUtilitiesTest {
         testValues.addValue(-66, 1, 1);
         testValues.addValue(56, 1, 2);
         testValues.addValue(1024, 1, 3);
-        //testValues.addValue(1024, 2, 0);
-        //testValues.addValue(1024, 3, 0);
 
         DefaultKeyedValues2D testValues2 = new DefaultKeyedValues2D();
         values2DNull=null;
@@ -66,33 +64,6 @@ public class DataUtilitiesTest {
         }
     }
 
-    /* TODO Figure this out for string tests
-    @Test
-    public void testCalculateColumnTotalInvalidDataNegativeColumn()
-    {
-        try{
-            DataUtilities.calculateColumnTotal("", 0);
-            Assert.fail("java: incompatible types: java.lang.String cannot be converted to org.jfree.data.Values2D");
-        } catch (Exception ex) {
-            Assert.assertEquals("java: incompatible types: java.lang.String cannot be converted to org.jfree.data.Values2D", ex.getMessage());
-        }
-    }
-
-    @Test
-    public void testCalculateColumnTotalInvalidDataValidColumn()
-    {
-        Assert.assertEquals("calculateColumnTotal: Did not return expected output - 0",
-                0, DataUtilities.calculateColumnTotal(values2D, -66), 0.0000001d);
-    }
-
-    @Test
-    public void testCalculateColumnTotalInvalidDataInvalidColumn()
-    {
-        Assert.assertEquals("calculateColumnTotal: Did not return expected output - 0",
-                0, DataUtilities.calculateColumnTotal(values2D, -66), 0.0000001d);
-    }
-     */
-
     @Test
     public void testCalculateColumnTotalNullDataNegativeColumn()
     {
@@ -129,7 +100,6 @@ public class DataUtilitiesTest {
 
 
     //Tests for calculateRowTotal
-    //figure out same as above
     @Test
     public void testCalculateRowTotalValidDataNegativeColumn()
     {
@@ -205,16 +175,6 @@ public class DataUtilitiesTest {
                numberArray, DataUtilities.createNumberArray(validDoubleArray));
    }
 
-    /*@Test
-    public void testCreateNumberArrayInvalidData()
-    {
-        try{
-            values2DNull=null;
-            DataUtilities.calculateRowTotal(values2DNull, 0);
-        } catch (NullPointerException ex) {
-            Assert.assertEquals("Cannot invoke \"org.jfree.data.Values2D.getColumnCount()\" because \"data\" is null", ex.getMessage());
-        }
-    }*/
 
     @Test
     public void testCreateNumberArrayNullValue()
@@ -240,16 +200,6 @@ public class DataUtilitiesTest {
                 numberArray2D, DataUtilities.createNumberArray2D(validDoubleArray2D));
     }
 
-    /*@Test
-    public void testCreateNumberArray2DInvalidData()
-    {
-        try{
-            values2DNull=null;
-            DataUtilities.calculateRowTotal(values2DNull, 0);
-        } catch (NullPointerException ex) {
-            Assert.assertEquals("Cannot invoke \"org.jfree.data.Values2D.getColumnCount()\" because \"data\" is null", ex.getMessage());
-        }
-    }*/
 
     @Test
     public void testCreateNumberArray2DNullValue()
@@ -281,17 +231,6 @@ public class DataUtilitiesTest {
                 expectedValues.getValue("0"), DataUtilities.getCumulativePercentages(testValues).getValue("0"));
     }
 
-    /*@Test
-    public void testGetCumulativePercentagesInvalidData()
-    {
-        try{
-            values2DNull=null;
-            DataUtilities.calculateRowTotal(values2DNull, 0);
-        } catch (NullPointerException ex) {
-            Assert.assertEquals("Cannot invoke \"org.jfree.data.Values2D.getColumnCount()\" because \"data\" is null", ex.getMessage());
-        }
-    }*/
-
     @Test
     public void testGetCumulativePercentagesNullValue()
     {
@@ -303,19 +242,6 @@ public class DataUtilitiesTest {
             Assert.assertEquals("class java.lang.IllegalArgumentException", ex.getClass().toString());
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
