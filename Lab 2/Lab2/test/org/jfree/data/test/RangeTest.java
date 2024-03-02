@@ -11,8 +11,6 @@ public class RangeTest {
     public void setUp() {
         rangeOne = new Range(4, 8);
         rangeTwo = new Range(2, 5);
-
-        //expand to include
         rangeThree = new Range(2, 11);
     }
 
@@ -23,47 +21,7 @@ public class RangeTest {
         rangeThree = null;
     }
 
-    //constrain
-
-    //TODO fails when returning value
-    @Test
-    public void testConstrainLessThanLowerBoundary() {
-        double expected = 2.0;
-        Assert.assertEquals("The value returned should be 2.0",
-                expected, rangeThree.constrain(1),0.0000001d);
-    }
-
-    @Test
-    public void testConstrainEqualToLowerBoundary() {
-        double expected = 2.0;
-        Assert.assertEquals("The value returned should be 2.0",
-                expected, rangeThree.constrain(2), 0.0000001d);
-    }
-
-    @Test
-    public void testConstrainBetweenLowerAndUpperBoundary() {
-        double expected = 5.0;
-        Assert.assertEquals("The value returned should be 5.0",
-                expected, rangeThree.constrain(5), 0.0000001d);
-    }
-
-    @Test
-    public void testConstrainEqualToUpperBoundary() {
-        double expected = 11.0;
-        Assert.assertEquals("The value returned should be 11.0",
-                expected, rangeThree.constrain(11), 0.0000001d);
-    }
-
-    @Test
-    public void testConstrainHigherThanUpperBoundary() {
-        double expected = 11.0;
-        Assert.assertEquals("The value returned should be 11.0",
-                expected, rangeThree.constrain(12), 0.0000001d);
-    }
-
-
     //combine method
-
     @Test
     public void testCombineBothValid() {
         Range expectedRange = new Range(2, 8);
@@ -93,7 +51,6 @@ public class RangeTest {
     }
 
     //expand to include method
-
     @Test
     public void testExpandToIncludeLessThanLowerBoundary() {
         Range expectedRange = new Range(1, 11);
@@ -106,6 +63,13 @@ public class RangeTest {
         Range expectedRange = new Range(2, 11);
         Assert.assertEquals("The expanded range should return 2 and 11",
                 expectedRange, Range.expandToInclude(rangeThree,2 ));
+    }
+
+    @Test
+    public void testExpandToIncludeMiddleBoundary() {
+        Range expectedRange = new Range(2, 11);
+        Assert.assertEquals("The expanded range should return 2 and 11",
+                expectedRange, Range.expandToInclude(null,6 ));
     }
 
     @Test
@@ -123,14 +87,41 @@ public class RangeTest {
     }
 
     @Test
-    public void testExpandToIncludeRangeNull() {
-        Range expectedRange = new Range(5, 5);
-        Assert.assertEquals("The expanded range should return 5 and 5",
-                expectedRange, Range.expandToInclude(null,5 ));
+    public void testExpandToIncludeRangeNullLessThanLowerBoundary() {
+        Range expectedRange = new Range(1, 1);
+        Assert.assertEquals("The expanded range should return 1 and 1",
+                expectedRange, Range.expandToInclude(null,1 ));
+    }
+
+    @Test
+    public void testExpandToIncludeRangeNullEqualToLowerBoundary() {
+        Range expectedRange = new Range(2, 2);
+        Assert.assertEquals("The expanded range should return 2 and 2",
+                expectedRange, Range.expandToInclude(null,2 ));
+    }
+
+    @Test
+    public void testExpandToIncludeRangeNullMiddleBoundary() {
+        Range expectedRange = new Range(6, 6);
+        Assert.assertEquals("The expanded range should return 6 and 6",
+                expectedRange, Range.expandToInclude(null,6 ));
+    }
+
+    @Test
+    public void testExpandToIncludeRangeNullEqualToUpperBoundary() {
+        Range expectedRange = new Range(11, 11);
+        Assert.assertEquals("The expanded range should return 11 and 11",
+                expectedRange, Range.expandToInclude(null,11 ));
+    }
+
+    @Test
+    public void testExpandToIncludeRangeNullHigherThanUpperBoundary() {
+        Range expectedRange = new Range(12, 12);
+        Assert.assertEquals("The expanded range should return 12 and 12",
+                expectedRange, Range.expandToInclude(null,12 ));
     }
 
     //expand
-    //TODO defect in the toString response
     @Test
     public void testExpandRangeValid() {
         Range expandRange = new Range(2, 6);
@@ -140,7 +131,6 @@ public class RangeTest {
                 expectedRange, Range.expand(expandRange, 0.25, 0.5));
     }
 
-    //TODO returned IllegalArgumentException
     @Test
     public void testExpandRangeNull() {
         try{
@@ -150,34 +140,66 @@ public class RangeTest {
         }
     }
 
-    //intersects
+    //constrain
+    @Test
+    public void testConstrainLessThanLowerBoundary() {
+        double expected = 2.0;
+        Assert.assertEquals("The value returned should be 2.0",
+                expected, rangeThree.constrain(1),0.0000001d);
+    }
 
+    @Test
+    public void testConstrainEqualToLowerBoundary() {
+        double expected = 2.0;
+        Assert.assertEquals("The value returned should be 2.0",
+                expected, rangeThree.constrain(2), 0.0000001d);
+    }
+
+    @Test
+    public void testConstrainMiddleBoundary() {
+        double expected = 6.0;
+        Assert.assertEquals("The value returned should be 6.0",
+                expected, rangeThree.constrain(6), 0.0000001d);
+    }
+
+    @Test
+    public void testConstrainEqualToUpperBoundary() {
+        double expected = 11.0;
+        Assert.assertEquals("The value returned should be 11.0",
+                expected, rangeThree.constrain(11), 0.0000001d);
+    }
+
+    @Test
+    public void testConstrainHigherThanUpperBoundary() {
+        double expected = 11.0;
+        Assert.assertEquals("The value returned should be 11.0",
+                expected, rangeThree.constrain(12), 0.0000001d);
+    }
+
+    //intersects
     @Test
     public void testIntersects14_18() {
         Assert.assertFalse("The value returned should be false",
-                rangeThree.intersects(14,18));
+                rangeThree.intersects(12,13));
     }
 
-    //TODO both lower and upper are higher than upper bound
     @Test
     public void testIntersects11_14() {
         Assert.assertTrue("The value returned should be true",
-                rangeThree.intersects(11,14));
+                rangeThree.intersects(11,12));
     }
 
-    //TODO upper is higher than upper bound
     @Test
     public void testIntersects8_15() {
         Assert.assertTrue("The value returned should be true",
-                rangeThree.intersects(8,15));
+                rangeThree.intersects(6,12));
     }
     @Test
     public void testIntersects2_14() {
         Assert.assertTrue("The value returned should be true",
-                rangeThree.intersects(2,14));
+                rangeThree.intersects(2,12));
     }
 
-    //TODO upper is less than lower bound
     @Test
     public void testIntersects0_1() {
         Assert.assertFalse("The value returned should be false",
@@ -187,24 +209,24 @@ public class RangeTest {
     @Test
     public void testIntersects0_2() {
         Assert.assertTrue("The value returned should be true",
-                rangeThree.intersects(0,2));
+                rangeThree.intersects(1,2));
     }
 
     @Test
     public void testIntersects0_6() {
         Assert.assertTrue("The value returned should be true",
-                rangeThree.intersects(0,6));
+                rangeThree.intersects(1,6));
     }
 
     @Test
     public void testIntersects0_11() {
         Assert.assertTrue("The value returned should be true",
-                rangeThree.intersects(0,11));
+                rangeThree.intersects(1,11));
     }
 
     @Test
     public void testIntersects0_12() {
         Assert.assertTrue("The value returned should be true",
-                rangeThree.intersects(0,12));
+                rangeThree.intersects(1,12));
     }
 }

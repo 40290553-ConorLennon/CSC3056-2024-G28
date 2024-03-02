@@ -8,6 +8,7 @@ import org.junit.Test;
 public class DataUtilitiesTest {
     private Values2D values2D;
     private Values2D values2DNull;
+
     @Before
     public void setUp()
     {
@@ -21,10 +22,12 @@ public class DataUtilitiesTest {
         testValues.addValue(-66, 1, 1);
         testValues.addValue(56, 1, 2);
         testValues.addValue(1024, 1, 3);
+        testValues.addValue(15, 2, 0);
+        testValues.addValue(19, 2, 1);
+        testValues.addValue(5, 2, 2);
+        testValues.addValue(22, 2, 3);
 
-        DefaultKeyedValues2D testValues2 = new DefaultKeyedValues2D();
         values2DNull=null;
-
     }
 
     @After
@@ -40,23 +43,36 @@ public class DataUtilitiesTest {
     public void testCalculateColumnTotalValidDataNegativeColumn()
     {
         try{
-            DataUtilities.calculateColumnTotal(values2D, -66);
+            DataUtilities.calculateColumnTotal(values2D, -1);
         } catch (Exception ex) {
-            Assert.assertEquals("Index -66 out of bounds for length 4", ex.getMessage());
+            Assert.assertEquals("Index -1 out of bounds for length 4", ex.getMessage());
         }
     }
 
     @Test
-    public void testCalculateColumnTotalBothValid()
+    public void testCalculateColumnTotalBothValidMinimum()
     {
-        Assert.assertEquals("calculateColumnTotal: Did not return expected output - 53",
-                -53, DataUtilities.calculateColumnTotal(values2D, 1), 0.0000001d);
+        Assert.assertEquals("calculateColumnTotal: Did not return expected output - 11",
+                11, DataUtilities.calculateColumnTotal(values2D, 0), 0.0000001d);
+    }
+
+    @Test
+    public void testCalculateColumnTotalBothValidMiddle()
+    {
+        Assert.assertEquals("calculateColumnTotal: Did not return expected output - -34",
+                -34, DataUtilities.calculateColumnTotal(values2D, 1), 0.0000001d);
+    }
+
+    @Test
+    public void testCalculateColumnTotalBothValidMaximum()
+    {
+        Assert.assertEquals("calculateColumnTotal: Did not return expected output - 1118",
+                1118, DataUtilities.calculateColumnTotal(values2D, 3), 0.0000001d);
     }
 
     @Test
     public void testCalculateColumnTotalValidDataInvalidColumn()
     {
-        //out of bounds
         try{
            DataUtilities.calculateColumnTotal(values2D, 4);
         } catch (Exception ex) {
@@ -76,7 +92,7 @@ public class DataUtilitiesTest {
     }
 
     @Test
-    public void testCalculateColumnTotalNullDataValidColumn()
+    public void testCalculateColumnTotalNullDataValidColumnMinimum()
     {
         try{
             values2DNull=null;
@@ -87,11 +103,32 @@ public class DataUtilitiesTest {
     }
 
     @Test
+    public void testCalculateColumnTotalNullDataValidColumnMiddle()
+    {
+        try{
+            values2DNull=null;
+            DataUtilities.calculateColumnTotal(values2DNull, 1);
+        }  catch (Exception ex) {
+            Assert.assertEquals("class java.lang.IllegalArgumentException", ex.getClass().toString());
+        }
+    }
+
+    @Test
+    public void testCalculateColumnTotalNullDataValidColumnMaximum()
+    {
+        try{
+            values2DNull=null;
+            DataUtilities.calculateColumnTotal(values2DNull, 3);
+        }  catch (Exception ex) {
+            Assert.assertEquals("class java.lang.IllegalArgumentException", ex.getClass().toString());
+        }
+    }
+    @Test
     public void testCalculateColumnTotalNullDataInvalidColumn()
     {
         try{
             values2DNull=null;
-            DataUtilities.calculateColumnTotal(values2DNull, 5);
+            DataUtilities.calculateColumnTotal(values2DNull, 4);
         }  catch (Exception ex) {
             Assert.assertEquals("class java.lang.IllegalArgumentException", ex.getClass().toString());
         }
@@ -104,28 +141,40 @@ public class DataUtilitiesTest {
     public void testCalculateRowTotalValidDataNegativeColumn()
     {
         try{
-            DataUtilities.calculateRowTotal(values2D, -66);
+            DataUtilities.calculateRowTotal(values2D, -1);
         } catch (Exception ex) {
-            Assert.assertEquals("Index -66 out of bounds for length 2", ex.getMessage());
+            Assert.assertEquals("Index -1 out of bounds for length 3", ex.getMessage());
         }
     }
 
-    //TODO failing test for Sure
     @Test
-    public void testCalculateRowTotalBothValid()
+    public void testCalculateRowTotalBothValidMinimum()
+    {
+        Assert.assertEquals("calculateRowTotal: Did not return expected output - 121",
+                121, DataUtilities.calculateRowTotal(values2D, 0), 0.0000001d);
+    }
+
+    @Test
+    public void testCalculateRowTotalBothValidMiddle()
     {
         Assert.assertEquals("calculateRowTotal: Did not return expected output - 1014",
                 1014, DataUtilities.calculateRowTotal(values2D, 1), 0.0000001d);
     }
 
     @Test
+    public void testCalculateRowTotalBothValidMaximum()
+    {
+        Assert.assertEquals("calculateRowTotal: Did not return expected output - 61",
+                61, DataUtilities.calculateRowTotal(values2D, 2), 0.0000001d);
+    }
+
+    @Test
     public void testCalculateRowTotalValidDataInvalidColumn()
     {
-        //out of bounds
         try{
-            DataUtilities.calculateRowTotal(values2D, 4);
+            DataUtilities.calculateRowTotal(values2D, 3);
         } catch (Exception ex) {
-            Assert.assertEquals("Index 4 out of bounds for length 2", ex.getMessage());
+            Assert.assertEquals("Index 3 out of bounds for length 3", ex.getMessage());
         }
     }
 
@@ -141,7 +190,7 @@ public class DataUtilitiesTest {
     }
 
     @Test
-    public void testCalculateRowTotalNullDataValidColumn()
+    public void testCalculateRowTotalNullDataValidColumnMinimum()
     {
         try{
             values2DNull=null;
@@ -152,19 +201,42 @@ public class DataUtilitiesTest {
     }
 
     @Test
-    public void testCalculateRowTotalNullDataInvalidColumn()
+    public void testCalculateRowTotalNullDataValidColumnMiddle()
     {
-        try {
-            values2DNull = null;
-            DataUtilities.calculateRowTotal(values2DNull, 5);
+        try{
+            values2DNull=null;
+            DataUtilities.calculateRowTotal(values2DNull, 1);
         } catch (Exception ex) {
             Assert.assertEquals("class java.lang.IllegalArgumentException", ex.getClass().toString());
         }
     }
 
-   //createNumberArray
+    @Test
+    public void testCalculateRowTotalNullDataValidColumnMaximum()
+    {
+        try{
+            values2DNull=null;
+            DataUtilities.calculateRowTotal(values2DNull, 2);
+        } catch (Exception ex) {
+            Assert.assertEquals("class java.lang.IllegalArgumentException", ex.getClass().toString());
+        }
+    }
 
-    //TODO failing test
+    @Test
+    public void testCalculateRowTotalNullDataInvalidColumn()
+    {
+        try {
+            values2DNull = null;
+            DataUtilities.calculateRowTotal(values2DNull, 3);
+        } catch (Exception ex) {
+            Assert.assertEquals("class java.lang.IllegalArgumentException", ex.getClass().toString());
+        }
+    }
+
+
+
+
+   //createNumberArray
    @Test
    public void testCreateNumberArrayValidData()
    {
@@ -213,7 +285,6 @@ public class DataUtilitiesTest {
     }
 
     //getCumulativePercentages
-//TODO failing test
     @Test
     public void testGetCumulativePercentagesValidData()
     {
