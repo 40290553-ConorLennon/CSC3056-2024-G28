@@ -178,54 +178,54 @@ public class RangeTest {
 
     //intersects
     @Test
-    public void testIntersects14_18() {
+    public void testIntersectsLowerGreaterThanUpper_UpperGreaterThanUpper() {
         Assert.assertFalse("The value returned should be false",
                 rangeThree.intersects(12,13));
     }
 
     @Test
-    public void testIntersects11_14() {
+    public void testIntersectsLowerEqualToUpper_UpperGreaterThanUpper() {
         Assert.assertTrue("The value returned should be true",
                 rangeThree.intersects(11,12));
     }
 
     @Test
-    public void testIntersects8_15() {
+    public void testIntersectsLowerMiddle_UpperGreaterThanUpper() {
         Assert.assertTrue("The value returned should be true",
                 rangeThree.intersects(6,12));
     }
     @Test
-    public void testIntersects2_14() {
+    public void testIntersectsLowerEqualToLower_UpperGreaterThanUpper() {
         Assert.assertTrue("The value returned should be true",
                 rangeThree.intersects(2,12));
     }
 
     @Test
-    public void testIntersects0_1() {
+    public void testIntersectsLowerLessThanLower_UpperLessThanLower() {
         Assert.assertFalse("The value returned should be false",
                 rangeThree.intersects(0,1));
     }
 
     @Test
-    public void testIntersects0_2() {
+    public void testIntersectsLowerLessThanLower_UpperEqualToLower() {
         Assert.assertTrue("The value returned should be true",
                 rangeThree.intersects(1,2));
     }
 
     @Test
-    public void testIntersects0_6() {
+    public void testIntersectsLowerLessThanLower_UpperMiddle() {
         Assert.assertTrue("The value returned should be true",
                 rangeThree.intersects(1,6));
     }
 
     @Test
-    public void testIntersects0_11() {
+    public void testIntersectsLowerLessThanLower_UpperEqualToUpper() {
         Assert.assertTrue("The value returned should be true",
                 rangeThree.intersects(1,11));
     }
 
     @Test
-    public void testIntersects0_12() {
+    public void testIntersectsLowerLessThanLower_UpperGreaterThanUpper() {
         Assert.assertTrue("The value returned should be true",
                 rangeThree.intersects(1,12));
     }
