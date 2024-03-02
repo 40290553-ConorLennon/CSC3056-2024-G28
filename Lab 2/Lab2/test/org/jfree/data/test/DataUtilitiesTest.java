@@ -222,13 +222,16 @@ public class DataUtilitiesTest {
         testValues.addValue("1", 9);
         testValues.addValue("2", 2);
 
-        DefaultKeyedValues expectedValues = new DefaultKeyedValues();
-        expectedValues.addValue("0", 0.3125);
-        expectedValues.addValue("1", 0.875);
-        expectedValues.addValue("2", 1.0);
+        Number[] expected = {0.3125, 0.875, 1.0};
 
-        Assert.assertEquals("getCumulativePercentages: Did not return expected output - {{1.0, 4.0, 5.0, 6.0}, {7.0, 8.0, 9.0, 2.0}}",
-                expectedValues.getValue("0"), DataUtilities.getCumulativePercentages(testValues).getValue("0"));
+        Number[] result = new Number[3];
+        result[0] =  DataUtilities.getCumulativePercentages(testValues).getValue("0");
+        result[1] =  DataUtilities.getCumulativePercentages(testValues).getValue("1");
+        result[2] =  DataUtilities.getCumulativePercentages(testValues).getValue("2");
+
+
+        Assert.assertEquals("getCumulativePercentages: Did not return expected output - {0: 0.1325}",
+                expected, result);
     }
 
     @Test
