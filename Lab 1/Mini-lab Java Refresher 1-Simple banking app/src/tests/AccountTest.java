@@ -15,7 +15,7 @@ public class AccountTest {
         String testAccountNumber = "1234-5678";
         String testUsernameOfAccountHolder = "jeff@gmail.com";
         String testAccountType = "Standard"; // "Standard" or "Saving"
-        Date testAccountOpeningDate = new SimpleDateFormat("dd/MM/yyyy").parse("20/08/2019"); ;
+        Date testAccountOpeningDate = new SimpleDateFormat("dd/MM/yyyy").parse("20/08/2019");
         Account testAccount = new Account(testAccountNumber, testUsernameOfAccountHolder, testAccountType, testAccountOpeningDate);
 
         assert testAccount.getAccount_number() == testAccountNumber;
@@ -28,7 +28,7 @@ public class AccountTest {
         String testAccountNumber = "1234-5678";
         String testUsernameOfAccountHolder = "jeff@gmail.com";
         String testAccountType = "Standard"; // "Standard" or "Saving"
-        Date testAccountOpeningDate = new SimpleDateFormat("dd/MM/yyyy").parse("20/08/2019"); ;
+        Date testAccountOpeningDate = new SimpleDateFormat("dd/MM/yyyy").parse("20/08/2019");
 
         Account testAccount = new Account("test", "test", "test",
                 new SimpleDateFormat("dd/MM/yyyy").parse("20/08/2022"));
