@@ -69,7 +69,7 @@ public class RangeTest {
     public void testExpandToIncludeMiddleBoundary() {
         Range expectedRange = new Range(2, 11);
         Assert.assertEquals("The expanded range should return 2 and 11",
-                expectedRange, Range.expandToInclude(null,6 ));
+                expectedRange, Range.expandToInclude(rangeThree,6 ));
     }
 
     @Test
@@ -81,7 +81,7 @@ public class RangeTest {
 
     @Test
     public void testExpandToIncludeHigherThanUpperBoundary() {
-        Range expectedRange = new Range(1, 12);
+        Range expectedRange = new Range(2, 12);
         Assert.assertEquals("The expanded range should return 2 and 12",
                 expectedRange, Range.expandToInclude(rangeThree,12 ));
     }

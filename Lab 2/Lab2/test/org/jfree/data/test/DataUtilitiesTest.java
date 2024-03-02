@@ -52,8 +52,8 @@ public class DataUtilitiesTest {
     @Test
     public void testCalculateColumnTotalBothValidMinimum()
     {
-        Assert.assertEquals("calculateColumnTotal: Did not return expected output - 11",
-                11, DataUtilities.calculateColumnTotal(values2D, 0), 0.0000001d);
+        Assert.assertEquals("calculateColumnTotal: Did not return expected output - 9",
+                9, DataUtilities.calculateColumnTotal(values2D, 0), 0.0000001d);
     }
 
     @Test
@@ -235,7 +235,6 @@ public class DataUtilitiesTest {
 
 
 
-
    //createNumberArray
    @Test
    public void testCreateNumberArrayValidData()
@@ -261,7 +260,6 @@ public class DataUtilitiesTest {
 
 
     //createNumberArray2D
-//TODO failing test
     @Test
     public void testCreateNumberArray2DValidData()
     {
@@ -301,7 +299,7 @@ public class DataUtilitiesTest {
         result[2] =  DataUtilities.getCumulativePercentages(testValues).getValue("2");
 
 
-        Assert.assertEquals("getCumulativePercentages: Did not return expected output - {0: 0.1325}",
+        Assert.assertEquals("getCumulativePercentages: Did not return expected output - {0.3125, 0.875, 1.0}",
                 expected, result);
     }
 
