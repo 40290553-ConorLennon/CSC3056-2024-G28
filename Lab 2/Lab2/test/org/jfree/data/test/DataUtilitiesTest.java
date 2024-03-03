@@ -37,7 +37,7 @@ public class DataUtilitiesTest {
     }
 
 
-    //Tests for calculateRowTotal
+    //Tests for calculateColumnTotal
 
     @Test
     public void testCalculateColumnTotalValidDataNegativeColumn()
@@ -138,7 +138,7 @@ public class DataUtilitiesTest {
 
     //Tests for calculateRowTotal
     @Test
-    public void testCalculateRowTotalValidDataNegativeColumn()
+    public void testCalculateRowTotalValidDataNegativeRow()
     {
         try{
             DataUtilities.calculateRowTotal(values2D, -1);
@@ -169,7 +169,7 @@ public class DataUtilitiesTest {
     }
 
     @Test
-    public void testCalculateRowTotalValidDataInvalidColumn()
+    public void testCalculateRowTotalValidDataInvalidRow()
     {
         try{
             DataUtilities.calculateRowTotal(values2D, 3);
@@ -179,7 +179,7 @@ public class DataUtilitiesTest {
     }
 
     @Test
-    public void testCalculateRowTotalNullDataNegativeColumn()
+    public void testCalculateRowTotalNullDataNegativeRow()
     {
         try{
             values2DNull=null;
@@ -190,7 +190,7 @@ public class DataUtilitiesTest {
     }
 
     @Test
-    public void testCalculateRowTotalNullDataValidColumnMinimum()
+    public void testCalculateRowTotalNullDataValidRowMinimum()
     {
         try{
             values2DNull=null;
@@ -201,7 +201,7 @@ public class DataUtilitiesTest {
     }
 
     @Test
-    public void testCalculateRowTotalNullDataValidColumnMiddle()
+    public void testCalculateRowTotalNullDataValidRowMiddle()
     {
         try{
             values2DNull=null;
@@ -212,7 +212,7 @@ public class DataUtilitiesTest {
     }
 
     @Test
-    public void testCalculateRowTotalNullDataValidColumnMaximum()
+    public void testCalculateRowTotalNullDataValidRowMaximum()
     {
         try{
             values2DNull=null;
@@ -223,7 +223,7 @@ public class DataUtilitiesTest {
     }
 
     @Test
-    public void testCalculateRowTotalNullDataInvalidColumn()
+    public void testCalculateRowTotalNullDataInvalidRow()
     {
         try {
             values2DNull = null;
@@ -240,10 +240,10 @@ public class DataUtilitiesTest {
    public void testCreateNumberArrayValidData()
    {
        double[] validDoubleArray = {1.0, 4.0, 5.0, 6.0};
-       Number[] numberArray = {1.0, 4.0, 5.0, 6.0};
+       Number[] expectedNumberArray = {1.0, 4.0, 5.0, 6.0};
 
        Assert.assertEquals("calculateNumberArray: Did not return expected output - {1.0, 4.0, 5.0, 6.0}",
-               numberArray, DataUtilities.createNumberArray(validDoubleArray));
+               expectedNumberArray, DataUtilities.createNumberArray(validDoubleArray));
    }
 
 
@@ -264,10 +264,10 @@ public class DataUtilitiesTest {
     public void testCreateNumberArray2DValidData()
     {
         double[][] validDoubleArray2D = {{1.0, 4.0, 5.0, 6.0}, {7.0, 8.0, 9.0, 2.0}};
-        Number[][] numberArray2D = {{1.0, 4.0, 5.0, 6.0}, {7.0, 8.0, 9.0, 2.0}};
+        Number[][] expectedNumberArray2D = {{1.0, 4.0, 5.0, 6.0}, {7.0, 8.0, 9.0, 2.0}};
 
         Assert.assertEquals("calculateNumberArray2D: Did not return expected output - {{1.0, 4.0, 5.0, 6.0}, {7.0, 8.0, 9.0, 2.0}}",
-                numberArray2D, DataUtilities.createNumberArray2D(validDoubleArray2D));
+                expectedNumberArray2D, DataUtilities.createNumberArray2D(validDoubleArray2D));
     }
 
 
