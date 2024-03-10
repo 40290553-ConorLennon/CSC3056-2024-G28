@@ -8,7 +8,7 @@ import org.junit.Test;
 public class DataUtilitiesTest {
     private Values2D values2D;
     private Values2D values2DNull;
-
+    // test comment
     @Before
     public void setUp()
     {
