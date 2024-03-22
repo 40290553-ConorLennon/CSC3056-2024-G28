@@ -134,6 +134,21 @@ public class DataUtilitiesTest {
         }
     }
 
+    @Test
+    public void testCalculateColumnTotalValues2DNullDataInvalidColumn()
+    {
+        try{
+        	DefaultKeyedValues2D testValues = new DefaultKeyedValues2D();
+            values2D = testValues;
+            testValues.addValue(null, 0, 0);
+            testValues.addValue(13, 0, 1);
+            testValues.addValue(42, 0, 2);
+            testValues.addValue(72, 0, 3);
+            DataUtilities.calculateColumnTotal(testValues, 0);
+        }  catch (Exception ex) {
+            Assert.assertEquals("class java.lang.IllegalArgumentException", ex.getClass().toString());
+        }
+    }
 
 
     //Tests for calculateRowTotal
@@ -232,6 +247,22 @@ public class DataUtilitiesTest {
             Assert.assertEquals("class java.lang.IllegalArgumentException", ex.getClass().toString());
         }
     }
+    
+    @Test
+    public void testCalculateRowTotalValues2DNullDataInvalidColumn()
+    {
+        try{
+        	DefaultKeyedValues2D testValues = new DefaultKeyedValues2D();
+            values2D = testValues;
+            testValues.addValue(null, 0, 0);
+            testValues.addValue(13, 0, 1);
+            testValues.addValue(42, 0, 2);
+            testValues.addValue(72, 0, 3);
+            DataUtilities.calculateRowTotal(testValues, 0);
+        }  catch (Exception ex) {
+            Assert.assertEquals("class java.lang.IllegalArgumentException", ex.getClass().toString());
+        }
+    }
 
 
 
@@ -275,8 +306,8 @@ public class DataUtilitiesTest {
     public void testCreateNumberArray2DNullValue()
     {
         try{
-            double[] nullDoubleArray = null;
-            DataUtilities.createNumberArray(nullDoubleArray);
+            double[][] nullDoubleArray = null;
+            DataUtilities.createNumberArray2D(nullDoubleArray);
         } catch (Exception ex) {
             Assert.assertEquals("class java.lang.IllegalArgumentException", ex.getClass().toString());
         }
@@ -315,5 +346,18 @@ public class DataUtilitiesTest {
         }
     }
 
+    @Test
+    public void testGetCumulativePercentagesNullKeyedValue()
+    {
+        try{
+        	DefaultKeyedValues testValues = new DefaultKeyedValues();
+            testValues.addValue("0", null);
+            testValues.addValue("1", 9);
+            testValues.addValue("2", 2);
+            DataUtilities.getCumulativePercentages(testValues);
+        } catch (Exception ex) {
+            Assert.assertEquals("class java.lang.IllegalArgumentException", ex.getClass().toString());
+        }
+    }
 
 }

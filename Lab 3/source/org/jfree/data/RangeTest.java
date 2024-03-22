@@ -229,4 +229,53 @@ public class RangeTest {
         Assert.assertTrue("The value returned should be true",
                 rangeThree.intersects(1,12));
     }
+
+
+    @Test
+    public void testShiftNoAllowZeroCrossing() {
+        Range expected = new Range(6.0, 10.0);
+        Assert.assertEquals("The Range returned should be [6.0,10.0]", expected,
+                Range.shift(rangeOne, 2.0));
+    }
+
+    @Test
+    public void testShiftAllowZeroCrossingTrue() {
+        Range expected = new Range(-2.0, 2.0);
+        Assert.assertEquals("The Range returned should be [-2.0,2.0]", expected,
+                Range.shift(rangeOne, -6.0, true));
+    }
+
+    @Test
+    public void testShiftAllowZeroCrossingFalse() {
+        Range expected = new Range(0.0, 3.0);
+        Assert.assertEquals("The Range returned should be [0.0,3.0]", expected,
+                Range.shift(rangeOne, -5.0, false));
+    }
+
+
+    @Test
+    public void testHashCode() {
+        int expected = -2114977792;
+        Assert.assertEquals("The hash code returned should be -2114977792",
+                expected, rangeOne.hashCode());
+    }
+
+    @Test
+    public void testGetCentralValue() {
+        double expected = 6;
+        Assert.assertEquals("Expected hash not ret", expected, rangeOne.getCentralValue(),1.234d);
+    }
+
+    @Test
+    public void testEqualsLower() {
+        Range testRange = new Range(2,8);
+        Assert.assertFalse("", rangeOne.equals(testRange));
+    }
+
+    @Test
+    public void testEqualsUpper() {
+        Range testRange = new Range(4, 10);
+        Assert.assertTrue("", rangeOne.equals(testRange));
+    }
+
 }
