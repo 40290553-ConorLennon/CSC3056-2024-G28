@@ -194,6 +194,7 @@ public class RangeTest {
         Assert.assertTrue("The value returned should be true",
                 rangeThree.intersects(6,12));
     }
+
     @Test
     public void testIntersectsLowerEqualToLower_UpperGreaterThanUpper() {
         Assert.assertTrue("The value returned should be true",
@@ -263,19 +264,25 @@ public class RangeTest {
     @Test
     public void testGetCentralValue() {
         double expected = 6;
-        Assert.assertEquals("Expected hash not ret", expected, rangeOne.getCentralValue(),1.234d);
+        Assert.assertEquals("The value returned should be 6", expected, rangeOne.getCentralValue(),1.234d);
     }
 
     @Test
     public void testEqualsLower() {
         Range testRange = new Range(2,8);
-        Assert.assertFalse("", rangeOne.equals(testRange));
+        Assert.assertFalse("The value returned should be false", rangeOne.equals(testRange));
     }
 
     @Test
     public void testEqualsUpper() {
         Range testRange = new Range(4, 10);
-        Assert.assertTrue("", rangeOne.equals(testRange));
+        Assert.assertFalse("The value returned should be false", rangeOne.equals(testRange));
+    }
+
+    @Test
+    public void testEqualsRange() {
+        Range testRange = new Range(4, 8);
+        Assert.assertTrue("The value returned should be true", rangeOne.equals(testRange));
     }
 
 }
